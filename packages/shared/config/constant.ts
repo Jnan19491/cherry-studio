@@ -327,6 +327,15 @@ export const WINDOWS_TERMINALS: TerminalConfig[] = [
   }
 ]
 
+/**
+ * Helper function to escape double quotes in Windows command strings
+ * Used to safely embed commands within quoted strings in Windows terminals
+ */
+const escapeDoubleQuotes = (str: string): string => {
+  const DOUBLE_QUOTE_ESCAPE = /"/g
+  return str.replace(DOUBLE_QUOTE_ESCAPE, '\\"')
+}
+
 export const WINDOWS_TERMINALS_WITH_COMMANDS: TerminalConfigWithCommand[] = [
   {
     id: terminalApps.cmd,
@@ -341,10 +350,10 @@ export const WINDOWS_TERMINALS_WITH_COMMANDS: TerminalConfigWithCommand[] = [
     name: 'PowerShell',
     command: (_: string, fullCommand: string) => {
       // Escape double quotes in the path
-      const escapedPath = fullCommand.replace(/"/g, '""')
+      const escapedPath = escapeDoubleQuotes(fullCommand)
       return {
         command: 'cmd',
-        args: ['/c', 'start', 'powershell', '-NoExit', '-Command', `& "${escapedPath}"`]
+        args: ['/c', 'start', 'powershell', '-Command', `& "${escapedPath}"`]
       }
     }
   },
@@ -353,7 +362,7 @@ export const WINDOWS_TERMINALS_WITH_COMMANDS: TerminalConfigWithCommand[] = [
     name: 'Windows Terminal',
     command: (_: string, fullCommand: string) => ({
       command: 'wt',
-      args: ['cmd', '/k', fullCommand]
+      args: ['cmd', '/c', `"${fullCommand.replace(/%/g, '%%')}"`]
     })
   },
   {
@@ -374,7 +383,7 @@ export const WINDOWS_TERMINALS_WITH_COMMANDS: TerminalConfigWithCommand[] = [
     customPath: '', // Will be set by user in settings
     command: (_: string, fullCommand: string) => ({
       command: 'alacritty', // Will be replaced with customPath if set
-      args: ['-e', 'cmd', '/k', fullCommand]
+      args: ['-e', 'cmd', '/c', `"${fullCommand.replace(/%/g, '%%')}"`]
     })
   },
   {
@@ -383,7 +392,7 @@ export const WINDOWS_TERMINALS_WITH_COMMANDS: TerminalConfigWithCommand[] = [
     customPath: '', // Will be set by user in settings
     command: (_: string, fullCommand: string) => ({
       command: 'wezterm', // Will be replaced with customPath if set
-      args: ['start', 'cmd', '/k', fullCommand]
+      args: ['start', 'cmd', '/c', `"${fullCommand.replace(/%/g, '%%')}"`]
     })
   }
 ]
