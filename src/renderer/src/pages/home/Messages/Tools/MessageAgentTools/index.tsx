@@ -11,6 +11,7 @@ export * from './types'
 
 // 导入所有渲染器
 import ToolPermissionRequestCard from '../ToolPermissionRequestCard'
+import { AskUserQuestionTool } from './AskUserQuestionTool'
 import { BashOutputTool } from './BashOutputTool'
 import { BashTool } from './BashTool'
 import { EditTool } from './EditTool'
@@ -50,7 +51,8 @@ export const toolRenderers = {
   [AgentToolsType.BashOutput]: BashOutputTool,
   [AgentToolsType.NotebookEdit]: NotebookEditTool,
   [AgentToolsType.ExitPlanMode]: ExitPlanModeTool,
-  [AgentToolsType.Skill]: SkillTool
+  [AgentToolsType.Skill]: SkillTool,
+  [AgentToolsType.AskUserQuestion]: AskUserQuestionTool
 } as const
 
 // 类型守卫函数

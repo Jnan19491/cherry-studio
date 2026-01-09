@@ -14,7 +14,8 @@ export enum AgentToolsType {
   MultiEdit = 'MultiEdit',
   BashOutput = 'BashOutput',
   NotebookEdit = 'NotebookEdit',
-  ExitPlanMode = 'ExitPlanMode'
+  ExitPlanMode = 'ExitPlanMode',
+  AskUserQuestion = 'AskUserQuestion'
 }
 
 export type TextOutput = {
@@ -322,6 +323,55 @@ export type ExitPlanModeToolInput = {
 }
 export type ExitPlanModeToolOutput = string
 
+// AskUserQuestion 工具的类型定义
+export interface AskUserQuestionOption {
+  /**
+   * The display text for this option
+   */
+  label: string
+  /**
+   * Explanation of what this option means
+   */
+  description?: string
+}
+
+export interface AskUserQuestionItem {
+  /**
+   * The complete question to ask the user
+   */
+  question: string
+  /**
+   * Very short label displayed as a chip/tag (max 12 chars)
+   */
+  header: string
+  /**
+   * The available choices for this question (2-4 options)
+   */
+  options: AskUserQuestionOption[]
+  /**
+   * Set to true to allow multiple selections
+   */
+  multiSelect: boolean
+}
+
+export interface AskUserQuestionToolInput {
+  /**
+   * Questions to ask the user (1-4 questions)
+   */
+  questions: AskUserQuestionItem[]
+}
+
+export interface AskUserQuestionAnswer {
+  [questionHeader: string]: string
+}
+
+export interface AskUserQuestionToolOutput {
+  /**
+   * User answers collected by the permission component
+   */
+  answers?: AskUserQuestionAnswer
+}
+
 // ListMcpResourcesToolInput
 export type ListMcpResourcesToolInput = {
   /**
@@ -365,6 +415,7 @@ export type ToolInput =
   | ExitPlanModeToolInput
   | ListMcpResourcesToolInput
   | ReadMcpResourceToolInput
+  | AskUserQuestionToolInput
 
 export type ToolOutput =
   | ReadToolOutput
@@ -382,6 +433,7 @@ export type ToolOutput =
   | BashOutputToolOutput
   | NotebookEditToolOutput
   | ExitPlanModeToolOutput
+  | AskUserQuestionToolOutput
 // 工具渲染器接口
 export interface ToolRenderer {
   render: (props: { input: ToolInput; output?: ToolOutput }) => React.ReactElement
