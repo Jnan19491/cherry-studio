@@ -4957,10 +4957,8 @@
         "image_provider": "Поставщик услуг OCR",
         "paddleocr": {
           "aistudio_access_token": "Токен доступа сообщества AI Studio",
-          "aistudio_url_label": "Сообщество AI Studio",
           "api_url": "URL API",
-          "serving_doc_url_label": "Документация по PaddleOCR Serving",
-          "tip": "Вы можете обратиться к официальной документации PaddleOCR, чтобы развернуть локальный сервис, либо развернуть облачный сервис в сообществе PaddlePaddle AI Studio. В последнем случае, пожалуйста, предоставьте токен доступа сообщества AI Studio."
+          "api_url_label": "Получение токена доступа и URL API"
         },
         "system": {
           "win": {
@@ -4973,6 +4971,12 @@
         "title": "OCR-сервис"
       },
       "preprocess": {
+        "paddleocr": {
+          "aistudio_access_token": "Токен доступа к сообществу AI Studio",
+          "api_url": "URL API",
+          "api_url_label": "Получение токена доступа и URL API",
+          "paddleocr_url_label": "Официальный сайт PaddleOCR"
+        },
         "provider": "Поставщик обработки документов",
         "provider_placeholder": "Выберите поставщика услуг обработки документов",
         "title": "Обработка документов",
@@ -5218,6 +5222,8 @@
     "detected": {
       "language": "Автоматическое обнаружение"
     },
+    "detected_source": "Обнаружено",
+    "detecting": "Обнаружение...",
     "empty": "Содержимое перевода пусто",
     "error": {
       "chat_qwen_mt": "Модель Qwen MT недоступна для использования в диалоге, перейдите на страницу перевода",
@@ -5270,6 +5276,7 @@
       "not_pair": "Исходный язык отличается от настроенного",
       "same": "Исходный и целевой языки совпадают"
     },
+    "language_settings": "Языковые настройки",
     "menu": {
       "description": "Перевести содержимое текущего ввода"
     },
@@ -5279,6 +5286,7 @@
     "output": {
       "placeholder": "Перевод"
     },
+    "preferred_target": "Предпочтительная цель",
     "processing": "Перевод в процессе...",
     "settings": {
       "autoCopy": "Автоматически копировать после завершения перевода",

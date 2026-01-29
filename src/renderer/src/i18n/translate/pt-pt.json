@@ -4957,10 +4957,8 @@
         "image_provider": "Provedor de serviços OCR",
         "paddleocr": {
           "aistudio_access_token": "Token de acesso da comunidade AI Studio",
-          "aistudio_url_label": "Comunidade AI Studio",
           "api_url": "URL da API",
-          "serving_doc_url_label": "Documentação do PaddleOCR Serving",
-          "tip": "Você pode consultar a documentação oficial do PaddleOCR para implantar um serviço local ou implantar um serviço na nuvem na Comunidade PaddlePaddle AI Studio. No último caso, forneça o token de acesso da Comunidade AI Studio."
+          "api_url_label": "Obter Token de Acesso e URL da API"
         },
         "system": {
           "win": {
@@ -4973,6 +4971,12 @@
         "title": "Serviço OCR"
       },
       "preprocess": {
+        "paddleocr": {
+          "aistudio_access_token": "Token de acesso da Comunidade AI Studio",
+          "api_url": "URL da API",
+          "api_url_label": "Obter Token de Acesso e URL da API",
+          "paddleocr_url_label": "Site Oficial do PaddleOCR"
+        },
         "provider": "prestador de serviços de pré-processamento de documentos",
         "provider_placeholder": "Escolha um fornecedor de pré-processamento de documentos",
         "title": "Pré-processamento de documentos",
@@ -5218,6 +5222,8 @@
     "detected": {
       "language": "Detecção automática"
     },
+    "detected_source": "Detectado",
+    "detecting": "Detectando...",
     "empty": "O conteúdo de tradução está vazio",
     "error": {
       "chat_qwen_mt": "Modelos Qwen MT não estão disponíveis para uso em conversas. Por favor, vá para a página de tradução.",
@@ -5270,6 +5276,7 @@
       "not_pair": "O idioma de origem é diferente do idioma definido",
       "same": "O idioma de origem e o idioma de destino são iguais"
     },
+    "language_settings": "Configurações de Idioma",
     "menu": {
       "description": "Traduzir o conteúdo da caixa de entrada atual"
     },
@@ -5279,6 +5286,7 @@
     "output": {
       "placeholder": "Tradução"
     },
+    "preferred_target": "Alvo Preferencial",
     "processing": "Traduzindo...",
     "settings": {
       "autoCopy": "Cópia automática após a tradução",
